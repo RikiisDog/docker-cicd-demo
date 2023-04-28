@@ -9,6 +9,6 @@ WORKDIR /workspace
 RUN ./gradlew build
 
 # Production Stage
-FROM openjdk:17 AS production
-COPY --from=test-and-build /workspace/build/api-0.0.1-SNAPSHOT.jar ./api.jar
-CMD ["java", "-jar", "api.jar"]
+FROM openjdk:17 AS prod
+COPY --from=test-and-build /workspace/build/libs/api-0.0.1-SNAPSHOT.jar ./api.jar
+CMD [ "java", "-jar", "api.jar" ]
